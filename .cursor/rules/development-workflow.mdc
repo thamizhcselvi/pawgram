@@ -1,0 +1,59 @@
+# Development Workflow & Best Practices
+
+## Project Setup
+- Use Android Studio for development
+- Sync Gradle files after any dependency changes
+- Run on API level 24+ (Android 7.0+)
+- Use Kotlin 1.9.10 and Compose BOM 2023.10.01
+
+## Building & Running
+- Debug build: `./gradlew assembleDebug`
+- Run on device: `./gradlew installDebug`
+- Clean build: `./gradlew clean`
+
+## Code Organization
+- Follow MVVM architecture strictly
+- Keep UI components in `ui/` package
+- Keep data layer in `data/` package
+- Use descriptive package names
+
+## Dependencies
+- Core dependencies in [app/build.gradle.kts](mdc:app/build.gradle.kts)
+- Compose BOM for version management
+- Retrofit for networking (configured for future use)
+- Coil for image loading
+- Kotlin Serialization for JSON handling
+
+## Testing
+- Unit tests for ViewModels and Repository
+- UI tests for Compose components
+- Integration tests for data flow
+- Mock data for consistent testing
+
+## Git Workflow
+- Use feature branches for new development
+- Commit messages should be descriptive
+- Include `.gitignore` for build artifacts
+- Document major changes in README
+
+## Performance
+- Use `remember` and `derivedStateOf` for expensive computations
+- Implement proper loading states
+- Use `LazyColumn` and `LazyRow` for large lists
+- Optimize image loading with Coil
+
+## Debugging
+- Use Android Studio's Layout Inspector for Compose
+- Log important events and errors
+- Use breakpoints for debugging ViewModels
+- Monitor memory usage and performance
+
+## Documentation
+- Keep README.md updated
+- Document complex UI components
+- Add comments for business logic
+- Maintain API documentation
+description:
+globs:
+alwaysApply: false
+---

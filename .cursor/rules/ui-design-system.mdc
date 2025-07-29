@@ -1,0 +1,43 @@
+# UI Design System & Theming
+
+## Color Scheme
+- **Primary**: Green (#4CAF50) - Used for buttons, progress bars, active states
+- **Secondary**: Orange (#FF9800) - Used for accents and highlights
+- **Background**: Dark (#121212) - Main app background
+- **Surface**: Dark gray (#1E1E1E) - Card and component backgrounds
+- **Surface Variant**: Lighter gray (#2D2D2D) - Secondary card backgrounds
+- **On Surface**: White - Text on dark backgrounds
+- **On Surface Variant**: Light gray (#B3B3B3) - Secondary text
+
+## Typography
+- Use Material Design 3 typography scale
+- **Title Large**: 22sp, Bold - Section headers
+- **Title Medium**: 18sp, Bold - Card titles
+- **Body Large**: 16sp, Normal - Main content
+- **Body Medium**: 14sp, Normal - Secondary content
+- **Label Medium**: 12sp, Medium - Small labels
+
+## Component Guidelines
+- Use `RoundedCornerShape(16.dp)` for main cards
+- Use `RoundedCornerShape(12.dp)` for smaller components
+- Use `CircleShape` for profile pictures and icons
+- Implement proper spacing with `Spacer` and `Arrangement.spacedBy()`
+
+## Theme Implementation
+- Theme file: [Theme.kt](mdc:app/src/main/java/com/pawgram/app/ui/theme/Theme.kt)
+- Typography: [Type.kt](mdc:app/src/main/java/com/pawgram/app/ui/theme/Type.kt)
+- Apply theme using `PawgramTheme` wrapper
+
+## Navigation
+- Custom bottom navigation with circular indicators
+- Active state uses primary color background
+- Inactive state uses transparent background with gray icons
+
+## Examples
+- Pet card component: [PetCard.kt](mdc:app/src/main/java/com/pawgram/app/ui/components/PetCard.kt)
+- Pet care center card: [PetCareCenterCard.kt](mdc:app/src/main/java/com/pawgram/app/ui/components/PetCareCenterCard.kt)
+- Bottom navigation: [BottomNavigation.kt](mdc:app/src/main/java/com/pawgram/app/ui/navigation/BottomNavigation.kt)
+description:
+globs:
+alwaysApply: false
+---
