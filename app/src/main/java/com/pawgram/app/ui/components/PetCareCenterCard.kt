@@ -87,7 +87,8 @@ fun PetCareCenterCard(
                 
                 // Center Details
                 Column(
-                    modifier = Modifier.weight(1f)
+                    modifier = Modifier.weight(1f),
+                    verticalArrangement = Arrangement.spacedBy(4.dp)
                 ) {
                     Text(
                         text = center.name,
@@ -96,62 +97,65 @@ fun PetCareCenterCard(
                         color = Color.White.copy(alpha = 0.95f)
                     )
                     
-                    Spacer(modifier = Modifier.height(4.dp))
-                    
-                    // Location
+                    // Location and Rating in horizontal row
                     Row(
-                        verticalAlignment = Alignment.CenterVertically
+                        verticalAlignment = Alignment.CenterVertically,
+                        horizontalArrangement = Arrangement.spacedBy(12.dp)
                     ) {
-                        Icon(
-                            imageVector = Icons.Default.LocationOn,
-                            contentDescription = "Location",
-                            modifier = Modifier.size(16.dp),
-                            tint = Color.White.copy(alpha = 0.75f)
-                        )
-                        Spacer(modifier = Modifier.width(4.dp))
-                        Text(
-                            text = center.getDistanceDisplay(),
-                            style = MaterialTheme.typography.bodyMedium,
-                            color = Color.White.copy(alpha = 0.75f)
-                        )
+                        // Location
+                        Row(
+                            verticalAlignment = Alignment.CenterVertically
+                        ) {
+                            Icon(
+                                imageVector = Icons.Default.LocationOn,
+                                contentDescription = "Location",
+                                modifier = Modifier.size(16.dp),
+                                tint = Color.White.copy(alpha = 0.75f)
+                            )
+                            Spacer(modifier = Modifier.width(4.dp))
+                            Text(
+                                text = center.getDistanceDisplay(),
+                                style = MaterialTheme.typography.bodyMedium,
+                                color = Color.White.copy(alpha = 0.75f)
+                            )
+                        }
+
+                        // Rating
+                        Row(
+                            verticalAlignment = Alignment.CenterVertically
+                        ) {
+                            Icon(
+                                imageVector = Icons.Default.Star,
+                                contentDescription = "Rating",
+                                modifier = Modifier.size(16.dp),
+                                tint = Color.White.copy(alpha = 0.75f)
+                            )
+                            Spacer(modifier = Modifier.width(4.dp))
+                            Text(
+                                text = center.getRatingDisplay(),
+                                style = MaterialTheme.typography.bodyMedium,
+                                color = Color.White.copy(alpha = 0.75f)
+                            )
+                        }
                     }
-
-                    Spacer(modifier = Modifier.height(2.dp))
-
-                    // Rating
-                    Row(
-                        verticalAlignment = Alignment.CenterVertically
-                    ) {
-                        Icon(
-                            imageVector = Icons.Default.Star,
-                            contentDescription = "Rating",
-                            modifier = Modifier.size(16.dp),
-                            tint = Color.White.copy(alpha = 0.75f)
-                        )
-                        Spacer(modifier = Modifier.width(4.dp))
-                        Text(
-                            text = center.getRatingDisplay(),
-                            style = MaterialTheme.typography.bodyMedium,
-                            color = Color.White.copy(alpha = 0.75f)
-                        )
-                    }
-
-                    Spacer(modifier = Modifier.height(8.dp))
 
                     // Service Tags
-                    Row {
+                    Row(
+                        modifier = Modifier.fillMaxWidth(),
+                        horizontalArrangement = Arrangement.Start
+                    ) {
                         center.services.take(2).forEach { service ->
                             Card(
-                                modifier = Modifier.padding(end = 8.dp),
-                                shape = RoundedCornerShape(8.dp),
+                                modifier = Modifier.padding(end = 4.dp),
+                                shape = RoundedCornerShape(6.dp),
                                 colors = CardDefaults.cardColors(
                                     containerColor = Color.White.copy(alpha = 0.15f)
                                 )
                             ) {
                                 Text(
                                     text = service,
-                                    modifier = Modifier.padding(horizontal = 8.dp, vertical = 4.dp),
-                                    style = MaterialTheme.typography.labelMedium,
+                                    modifier = Modifier.padding(horizontal = 6.dp, vertical = 2.dp),
+                                    style = MaterialTheme.typography.labelSmall,
                                     color = Color.White.copy(alpha = 0.8f)
                                 )
                             }
@@ -159,15 +163,15 @@ fun PetCareCenterCard(
                         
                         if (center.services.size > 2) {
                             Card(
-                                shape = RoundedCornerShape(8.dp),
+                                shape = RoundedCornerShape(6.dp),
                                 colors = CardDefaults.cardColors(
                                     containerColor = Color.White.copy(alpha = 0.15f)
                                 )
                             ) {
                                 Text(
-                                    text = "+${center.services.size - 1}",
-                                    modifier = Modifier.padding(horizontal = 8.dp, vertical = 4.dp).wrapContentWidth(),
-                                    style = MaterialTheme.typography.labelMedium,
+                                    text = "+${center.services.size - 2}",
+                                    modifier = Modifier.padding(horizontal = 6.dp, vertical = 2.dp),
+                                    style = MaterialTheme.typography.labelSmall,
                                     color = Color.White.copy(alpha = 0.8f)
                                 )
                             }
@@ -178,7 +182,7 @@ fun PetCareCenterCard(
                 // More options button
                 IconButton(
                     onClick = { /* TODO: Show options menu */ },
-                    modifier = Modifier.align(Alignment.Top)
+                    modifier = Modifier.align(Alignment.CenterVertically)
                 ) {
                     Icon(
                         imageVector = Icons.Default.MoreVert,
